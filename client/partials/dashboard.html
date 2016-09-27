@@ -1,0 +1,42 @@
+<p>Bucket List  | <a href="#/dashboard">Home</a>  | <li style="list-style-type: none"><a ng-click="logout()" style="text-decoration: underline">Log out</a></li></p> 
+
+<h1>Welcome, {{user}}!</h1>
+
+<form name="myform">
+	<input type="text" name="title" placeholder="Title" ng-model="item.title" ng-minlength='5' required>
+	<input type="text" name="description" placeholder="Description" ng-model="item.description" ng-minlength='10' required>
+	<select ng-options="n.name for n in names" ng-model="item.friend">
+	</select>
+	<div> <span style="color:red" ng-show="myform.title.$error.minlength"> Title must be 5+ characters long</span></div>
+	<div> <span style="color:red" ng-show="myform.description.$error.minlength"> Description must be 10+ characters long</span></div>
+	<button ng-disabled="myform.$invalid" ng-click='add()'>ADD TO LIST</button>
+	<!--<input type="submit" name="submit" value="Add to List" ng-click="add()">-->
+</form>
+
+<h3>Before I die I want to ...</h3>
+<table>
+
+	<tbody>
+		<tr ng-repeat="i in items">
+		<td>
+		<div ng-if="i.done == true">
+			<input type="checkbox" name="" ng-click="done(i._id)" checked>
+		</div>
+		<div ng-if="i.done != true">
+			<input type="checkbox" name="" ng-click="done(i._id)">
+		</div>
+		</td>
+		<td>{{i.friend}}</td>
+		<td>| </td>
+		<td>{{i.title}}</td>
+		<td>-</td>
+		<td>{{i.description}}</td>
+		<td>-</td>
+		<td>{{i.createdAt | date:"MMMM dd yyyy"}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>List of other users (Click to view profile):</p>
+
+<p ng-repeat="n in names"><a href="#/view/{{n.name}}">{{n.name}}</a></p>

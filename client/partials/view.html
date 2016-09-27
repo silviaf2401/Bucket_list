@@ -1,0 +1,38 @@
+<p>Bucket List  | <a href="#/dashboard">Home</a>  | <a ng-click="logout()">Log out</a></p> 
+
+<p>{{name}}'s Bucket List</p>
+
+<p>Done</p>
+
+<table>
+<tbody>
+		<tr ng-repeat="i in itemsDone">
+		<td><input type="checkbox" name="" checked onclick="return false"></td>
+		<td>{{i.name}}</td>
+		<td>|</td>
+		<td>{{i.title}}</td>
+		<td>-</td>
+		<td>{{i.description}}</td>
+		<td>-</td>
+		<td>{{i.createdAt | date:"MMMM dd yyyy"}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Pending</p>
+<table>
+<tbody>
+		<tr ng-repeat="i in itemsNotDone">
+		<td><input type="checkbox" name="" onclick="return false"></td>
+		<td>{{i.name}}</td>
+		<td>|</td>
+		<td>{{i.title}}</td>
+		<td>-</td>
+		<td>{{i.description}}</td>
+		<td>-</td>
+		<td>{{i.createdAt | date:"MMMM dd yyyy"}}</td>
+		</tr>
+	</tbody>
+</table>
+
+
